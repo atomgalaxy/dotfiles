@@ -66,7 +66,12 @@ fi
 export HISTFILESIZE=10000
 shopt -s histappend
 
-export EDITOR=/opt/local/bin/vim
+if [[ "$(uname)" == "Darwin" ]]
+then
+    export EDITOR=/opt/local/bin/vim
+else
+    export EDITOR=/usr/bin/vim
+fi
 export CC=clang
 export CXX=clang++
 

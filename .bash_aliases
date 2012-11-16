@@ -16,7 +16,7 @@ alias atomicity-socks-proxy='ssh atomicity.org -D 9950'
 alias carver='ssh train200@carver.nersc.gov'
 alias ramblaze='ssh ramblaze.ist.berkeley.edu -l gasper'
 alias datablaze='ssh datablaze.ist.berkeley.edu -l gasper'
-if [[ "$(uname)" -eq "Darwin" ]]
+if [[ "$(uname)" == "Darwin" ]]
 then
     alias ls='ls -G'
 else
