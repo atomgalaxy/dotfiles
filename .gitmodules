@@ -1,0 +1,36 @@
+[submodule ".vim/vim-pathogen"]
+	path = .vim/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/https:/github.com/vim-scripts/taglist.vim.git"]
+	path = .vim/bundle/https:/github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule ".vim/bundle/https:/github.com/vim-scripts/TaskList.vim.git"]
+	path = .vim/bundle/https:/github.com/vim-scripts/TaskList.vim.git
+	url = https://github.com/vim-scripts/TaskList.vim.git
+[submodule ".vim/bundle/https:/github.com/vim-scripts/autotags.git"]
+	path = .vim/bundle/https:/github.com/vim-scripts/autotags.git
+	url = https://github.com/vim-scripts/autotags.git
+[submodule ".vim/bundle/https:/github.com/vim-scripts/a.vim.git"]
+	path = .vim/bundle/https:/github.com/vim-scripts/a.vim.git
+	url = https://github.com/vim-scripts/a.vim.git
+[submodule ".vim/bundle/https:/github.com/vim-scripts/Align.git"]
+	path = .vim/bundle/https:/github.com/vim-scripts/Align.git
+	url = https://github.com/vim-scripts/Align.git
+[submodule ".vim/bundle/https:/github.com/ervandew/supertab.git"]
+	path = .vim/bundle/https:/github.com/ervandew/supertab.git
+	url = https://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/https:/github.com/tpope/vim-fugitive.git"]
+	path = .vim/bundle/https:/github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/https:/github.com/Rip-Rip/clang_complete.git"]
+	path = .vim/bundle/https:/github.com/Rip-Rip/clang_complete.git
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule ".vim/bundle/https:/github.com/hrp/EnhancedCommentify.git"]
+	path = .vim/bundle/https:/github.com/hrp/EnhancedCommentify.git
+	url = https://github.com/hrp/EnhancedCommentify.git
+[submodule ".vim/bundle/git:/vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex"]
+	path = .vim/bundle/git:/vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule ".vim/bundle/https:/github.com/ciaranm/inkpot.git"]
+	path = .vim/bundle/https:/github.com/ciaranm/inkpot.git
+	url = https://github.com/ciaranm/inkpot.git
