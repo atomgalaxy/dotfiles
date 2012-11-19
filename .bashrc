@@ -35,6 +35,10 @@ fi
 
 CLANGPATH="/opt/local/libexec/llvm-3.2/bin"
 PATH="$HOME/bin:$CLANGPATH:/opt/local/bin:$PATH"
+if [[ -d /usr/local/MATLAB/R2012b/bin ]]
+then
+    PATH="$PATH:/usr/local/MATLAB/R2012b/bin"
+fi
 
 # Change the window title of X terminals 
 case ${TERM} in
