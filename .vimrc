@@ -195,7 +195,11 @@ let g:clang_complete_auto=0
 let g:clang_periodic_quickfix=0
 let g:clang_hl_errors=1
 let g:clang_use_library=1
-let g:clang_library_path="/opt/local/libexec/llvm-3.2/lib/"
+if filereadable("/opt/local/libexec/llvm-3.2/lib")
+    let g:clang_library_path="/opt/local/libexec/llvm-3.2/lib/"
+else
+    let g:clang_library_path="/usr/lib/llvm/"
+endif
 let g:clang_snippets_engine = 'clang_complete'
 let g:clang_snippets = 1
 let g:clang_complete_macros = 1

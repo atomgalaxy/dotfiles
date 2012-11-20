@@ -23,36 +23,75 @@ elif [[ -f /etc/DIR_COLORS ]] ; then
 fi
 
 # enable bash completion
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+if [[ -f /opt/local/etc/profile.d/bash_completion.sh ]]
+then
     . /opt/local/etc/profile.d/bash_completion.sh
-fi
-if [ -f /etc/bash_completion ]; then
+elif [[ -f /etc/bash_completion ]]
+then
     . /etc/bash_completion
 fi
 
-# add ./bin to path
-#PATH="/home/atom/dev/dmd/dmd/src:/home/atom/bin:/usr/local/bin:$PATH"
-
-CLANGPATH="/opt/local/libexec/llvm-3.2/bin"
-PATH="$HOME/bin:$CLANGPATH:/opt/local/bin:$PATH"
-if [[ -d /usr/local/MATLAB/R2012b/bin ]]
+# clang
+if [[ -e /opt/local/libexec/llvm-3.2/bin ]]
 then
-    PATH="$PATH:/usr/local/MATLAB/R2012b/bin"
+    clangpath="/opt/local/libexec/llvm-3.2/bin"
+elif [[ -e /usr/local/clang-trunk/ ]]
+then
+    clangpath="/usr/local/clang-trunk/bin/"
+else
+    clangpath=""
 fi
+# matlab
+if [[ -e /usr/local/MATLAB/R2012b/bin ]]
+then
+    matlabpath="${PATH}:/usr/local/MATLAB/R2012b/bin"
+else
+    matlabpath=""
+fi
+# path for local tool symlinks
+if [[ -e "$HOME/bin" ]]
+then
+    localpath="$HOME/bin"
+else
+    localpath=""
+fi
+if [[ -e /opt/local/bin ]]
+then
+    portspath="/opt/local/bin/"
+else
+    portspath=""
+fi
+
+export PATH="${localpath}:${clangpath}:${portspath}:$PATH"
+
+unset clangpath
+unset matlabpath
+unset localpath
+unset portspath
 
 # Change the window title of X terminals 
 case ${TERM} in
     xterm*|rxvt*|Eterm|aterm|kterm|gnome)
-        PROMPT_COMMAND="${PROMPT_COMMAND}"'echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007";'
+        if [[ "x$(uname)" == "xDarwin" ]]
+        then
+            PROMPT_COMMAND="${PROMPT_COMMAND}"'echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007";'
+        else
+            PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007";'
+        fi
         ;;
     screen)
-        PROMPT_COMMAND="${PROMPT_COMMAND}"'echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\;";'
+        if [[ "x$(uname)" == "xDarwin" ]]
+        then
+            PROMPT_COMMAND="${PROMPT_COMMAND}"'echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\;";'
+        else
+            PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\;";'
+        fi
         ;;
 esac
 export PROMPT_COMMAND
 
 # colors
-if [ -f ~/.bash_colors ]
+if [[ -f ~/.bash_colors ]]
 then
     . ~/.bash_colors
 fi
@@ -72,9 +111,9 @@ shopt -s histappend
 
 if [[ "$(uname)" == "Darwin" ]]
 then
-    export EDITOR=/opt/local/bin/vim
+    export EDITOR=/usr/bin/env mvim
 else
-    export EDITOR=/usr/bin/vim
+    export EDITOR=/usr/bin/env vim
 fi
 export CC=clang
 export CXX=clang++
