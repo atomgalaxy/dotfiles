@@ -115,7 +115,7 @@ if !exists("autocommands_loaded")
 
     autocmd FileType CMake* set commentstring=#%s
 
-    autocmd FileType qf call quickfix_height#AdjustWindowHeight(3, 7)
+    autocmd FileType qf call QuickfixHeight#AdjustWindowHeight(3, 7)
 endif 
 
 " 

@@ -62,7 +62,7 @@ else
     portspath=""
 fi
 
-export PATH="${localpath}:${clangpath}:${portspath}:$PATH"
+export PATH="${localpath}:${clangpath}:${matlabpath}:${portspath}:$PATH"
 
 unset clangpath
 unset matlabpath
@@ -111,9 +111,9 @@ shopt -s histappend
 
 if [[ "$(uname)" == "Darwin" ]]
 then
-    export EDITOR=/usr/bin/env mvim
+    export EDITOR="/usr/bin/env mvim"
 else
-    export EDITOR=/usr/bin/env vim
+    export EDITOR="/usr/bin/env vim"
 fi
 export CC=clang
 export CXX=clang++
