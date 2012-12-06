@@ -1,0 +1,44 @@
+#!vim: ft=sh
+
+# clang
+if [[ -e /opt/local/libexec/llvm-3.2/bin ]]
+then
+    clangpath="/opt/local/libexec/llvm-3.2/bin"
+elif [[ -e /usr/local/clang-trunk/ ]]
+then
+    clangpath="/usr/local/clang-trunk/bin/"
+else
+    clangpath=""
+fi
+# matlab
+if [[ -e /usr/local/MATLAB/R2012b/bin ]]
+then
+    matlabpath="${PATH}:/usr/local/MATLAB/R2012b/bin"
+else
+    matlabpath=""
+fi
+# path for local tool symlinks
+if [[ -e "$HOME/bin" ]]
+then
+    localpath="$HOME/bin"
+else
+    localpath=""
+fi
+if [[ -e /opt/local/bin ]]
+then
+    portspath="/opt/local/bin/"
+else
+    portspath=""
+fi
+
+export PATH="${localpath}:${clangpath}:${portspath}:$PATH"
+
+unset clangpath
+unset matlabpath
+unset localpath
+unset portspath
+
+export EDITOR="/usr/bin/env vim"
+
+export CC=clang
+export CXX=clang++

@@ -13,6 +13,10 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+if [[ "x$BASH" == "x" ]] ; then
+    return
+fi
+
 source /etc/profile
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
@@ -31,43 +35,6 @@ then
     . /etc/bash_completion
 fi
 
-# clang
-if [[ -e /opt/local/libexec/llvm-3.2/bin ]]
-then
-    clangpath="/opt/local/libexec/llvm-3.2/bin"
-elif [[ -e /usr/local/clang-trunk/ ]]
-then
-    clangpath="/usr/local/clang-trunk/bin/"
-else
-    clangpath=""
-fi
-# matlab
-if [[ -e /usr/local/MATLAB/R2012b/bin ]]
-then
-    matlabpath="${PATH}:/usr/local/MATLAB/R2012b/bin"
-else
-    matlabpath=""
-fi
-# path for local tool symlinks
-if [[ -e "$HOME/bin" ]]
-then
-    localpath="$HOME/bin"
-else
-    localpath=""
-fi
-if [[ -e /opt/local/bin ]]
-then
-    portspath="/opt/local/bin/"
-else
-    portspath=""
-fi
-
-export PATH="${localpath}:${clangpath}:${portspath}:$PATH"
-
-unset clangpath
-unset matlabpath
-unset localpath
-unset portspath
 
 # Change the window title of X terminals 
 case ${TERM} in
@@ -109,16 +76,11 @@ fi
 export HISTFILESIZE=10000
 shopt -s histappend
 
-if [[ "$(uname)" == "Darwin" ]]
-then
-    export EDITOR=/usr/bin/env mvim
-else
-    export EDITOR=/usr/bin/env vim
-fi
-export CC=clang
-export CXX=clang++
-
 # include aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+if [ -f ~/.shell_paths ]; then
+    . ~/.shell_paths
 fi
