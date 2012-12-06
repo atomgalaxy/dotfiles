@@ -76,6 +76,15 @@ fi
 export HISTFILESIZE=10000
 shopt -s histappend
 
+if [[ "$(uname)" == "Darwin" ]]
+then
+    export EDITOR="/usr/bin/env mvim"
+else
+    export EDITOR="/usr/bin/env vim"
+fi
+export CC=clang
+export CXX=clang++
+
 # include aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

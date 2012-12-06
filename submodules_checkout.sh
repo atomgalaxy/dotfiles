@@ -1,4 +1,4 @@
 git submodule init
 git submodule update
-git submodule foreach checkout master
-git submodule foreach pull
+git submodule foreach git checkout master
+git submodule foreach git pull
