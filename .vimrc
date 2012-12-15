@@ -24,8 +24,8 @@ set modeline
 set encoding=utf-8
 set formatoptions=tcrn
 set textwidth=80
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 ""
 " USER INTERFACE
